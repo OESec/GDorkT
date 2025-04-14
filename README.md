@@ -1,4 +1,4 @@
-# Project 10042025 - GDORKT
+# Project GDORKT
 
 ## Overview
 
