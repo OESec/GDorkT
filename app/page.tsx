@@ -1,5 +1,10 @@
+"use client"
+
 import { DorkingTool } from "@/components/dorking-tool"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { Github } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 export default function Home() {
   return (
@@ -10,7 +15,27 @@ export default function Home() {
             <h1 className="text-3xl font-bold mb-2">Google Dorking Tool</h1>
             <p className="text-muted-foreground">Build advanced Google search queries to find specific information</p>
           </div>
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="rounded-full"
+                    onClick={() => window.open("https://github.com/OESec/GDorkT", "_blank")}
+                    aria-label="View on GitHub"
+                  >
+                    <Github className="h-5 w-5" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>View on GitHub</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <ThemeToggle />
+          </div>
         </div>
         <DorkingTool />
       </div>
