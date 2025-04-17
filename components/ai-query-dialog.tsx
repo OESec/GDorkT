@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Sparkles, Loader2 } from "lucide-react"
+import { Sparkles, Loader2, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -64,6 +64,11 @@ export function AIQueryDialog({ open, onOpenChange, onQueryGenerated }: AIQueryD
     setGeneratedQuery("")
   }
 
+  const handleClearQuery = () => {
+    setGeneratedQuery("")
+    setPrompt("")
+  }
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px]">
@@ -98,6 +103,12 @@ export function AIQueryDialog({ open, onOpenChange, onQueryGenerated }: AIQueryD
           <Button variant="outline" onClick={() => onOpenChange(false)}>
             Cancel
           </Button>
+          {generatedQuery && (
+            <Button variant="outline" onClick={handleClearQuery} className="text-red-500 hover:text-red-700">
+              <X className="h-4 w-4 mr-2" />
+              Clear
+            </Button>
+          )}
           {generatedQuery ? (
             <Button onClick={handleUseQuery} className="bg-blue-600 hover:bg-blue-700 text-white">
               Use This Query
